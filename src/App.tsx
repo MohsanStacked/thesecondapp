@@ -12,8 +12,8 @@ function App() {
         <div className="flex-grow flex flex-col relative">
           <div className="absolute bottom-0 w-full h-1/2 bg-gray-200"></div>
           <Routes>
-            <Route path="/" element={<Navigate to="/dhikr" replace />} />
-            <Route path="/dhikr" element={<Dhikr />} />
+            <Route path="/" element={<Dhikr />} />
+            <Route path="/dhikr" element={<Navigate to="/" replace />} />
             <Route path="/acts" element={<Acts />} />
           </Routes>
         </div>
