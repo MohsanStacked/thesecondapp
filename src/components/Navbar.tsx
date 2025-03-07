@@ -13,6 +13,16 @@ export const Navbar = () => (
       Dhikr
     </NavLink>
     <NavLink
+      to="/tasbeeh"
+      className={({ isActive }) =>
+        `uppercase text-sm tracking-wider transition-colors ${
+          isActive ? "text-amber-400" : "text-white hover:text-gray-300"
+        }`
+      }
+    >
+      Tasbeeh
+    </NavLink>
+    <NavLink
       to="/acts"
       className={({ isActive }) =>
         `uppercase text-sm tracking-wider transition-colors ${
@@ -20,7 +30,7 @@ export const Navbar = () => (
         }`
       }
     >
-      Small deeds for success
+      Acts of Muslims
     </NavLink>
   </nav>
 );

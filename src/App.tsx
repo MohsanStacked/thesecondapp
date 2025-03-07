@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Dhikr } from "./components/Dhikr";
 import { Acts } from "./components/Acts";
+import { Tasbeeh } from "./components/Tasbeeh";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Dhikr />} />
             <Route path="/dhikr" element={<Navigate to="/" replace />} />
+            <Route path="/tasbeeh" element={<Tasbeeh />} />
             <Route path="/acts" element={<Acts />} />
           </Routes>
         </div>
