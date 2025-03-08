@@ -32,5 +32,15 @@ export const Navbar = () => (
     >
       Acts of Muslims
     </NavLink>
+    <NavLink
+      to="/tracker"
+      className={({ isActive }) =>
+        `uppercase text-sm tracking-wider transition-colors ${
+          isActive ? "text-amber-400" : "text-white hover:text-gray-300"
+        }`
+      }
+    >
+      Tracker
+    </NavLink>
   </nav>
 );

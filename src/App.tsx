@@ -4,6 +4,7 @@ import { Navbar } from "./components/Navbar";
 import { Dhikr } from "./components/Dhikr";
 import { Acts } from "./components/Acts";
 import { Tasbeeh } from "./components/Tasbeeh";
+import { DhikrTracker } from "./components/DhikrTracker";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/dhikr" element={<Navigate to="/" replace />} />
             <Route path="/tasbeeh" element={<Tasbeeh />} />
             <Route path="/acts" element={<Acts />} />
+            <Route path="/tracker" element={<DhikrTracker />} />
           </Routes>
         </div>
       </div>

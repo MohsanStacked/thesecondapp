@@ -1,22 +1,36 @@
 import { useState, useEffect, useCallback } from "react";
 import { quotes } from "../data/quotes";
 export const Tasbeeh = () => {
-  const [quoteIndex, setQuoteIndex] = useState(0);
+  const [quoteIndex, setQuoteIndex] = useState(() => {
+    const savedIndex = localStorage.getItem("tasbeeh_current_index");
+    return savedIndex ? parseInt(savedIndex, 10) : 0;
+  });
   const [count, setCount] = useState(0);
   const [target] = useState(33);
 
   // Load saved count from localStorage
   useEffect(() => {
-    const savedCount = localStorage.getItem("tasbeehCount");
-    if (savedCount) {
-      setCount(parseInt(savedCount, 10));
+    const key = `dhikr_${quotes[quoteIndex]?.arabic}`;
+    const savedData = localStorage.getItem(key);
+    if (savedData) {
+      const data = JSON.parse(savedData);
+      setCount(data.count);
+    } else {
+      setCount(0);
     }
-  }, []);
+  }, [quoteIndex]);
 
   // Save count to localStorage when it changes
   useEffect(() => {
-    localStorage.setItem("tasbeehCount", count.toString());
-  }, [count]);
+    const key = `dhikr_${quotes[quoteIndex]?.arabic}`;
+    const data = {
+      name: quotes[quoteIndex]?.transliteration || "",
+      arabic: quotes[quoteIndex]?.arabic || "",
+      count: count,
+      lastUpdated: new Date().toISOString(),
+    };
+    localStorage.setItem(key, JSON.stringify(data));
+  }, [count, quoteIndex]);
 
   const debounce = (func: Function, wait: number) => {
     let timeout: number | undefined;
@@ -58,6 +72,7 @@ export const Tasbeeh = () => {
         ? (quoteIndex + 1) % quotes.length
         : (quoteIndex - 1 + quotes.length) % quotes.length;
     setQuoteIndex(newIndex);
+    localStorage.setItem("tasbeeh_current_index", newIndex.toString());
   };
 
   // Use a single color for the counter
