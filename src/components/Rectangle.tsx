@@ -32,7 +32,10 @@ export const Rectangle: React.FC<RectangleProps> = ({ quotes }) => {
 
       <div className="relative h-full flex flex-col items-center justify-start p-8 pb-20">
         <div className="w-full overflow-y-auto max-h-[calc(100vh-16rem)] scrollbar-hide">
-          <h2 className="text-2xl sm:text-3xl font-arabic mb-4 text-center text-amber-900 leading-relaxed">
+          <h2
+            className="text-2xl sm:text-3xl font-arabic mb-4 text-center text-amber-900"
+            style={{ lineHeight: "2em" }}
+          >
             {quotes[currentIndex].arabic}
           </h2>
           <p className="text-sm sm:text-lg text-center mb-4 text-stone-700 leading-relaxed px-4">

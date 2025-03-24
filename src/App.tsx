@@ -1,14 +1,15 @@
-import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Dhikr } from "./components/Dhikr";
 import { Acts } from "./components/Acts";
 import { Tasbeeh } from "./components/Tasbeeh";
 import { DhikrTracker } from "./components/DhikrTracker";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
     <BrowserRouter>
+      <Analytics />
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <div className="flex-grow flex flex-col relative">
